@@ -95,7 +95,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $post->update($request->only(['title', 'body']));
+
+        return new PostResource($post);
     }
 
     /**
