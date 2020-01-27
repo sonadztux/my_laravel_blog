@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -85,7 +86,7 @@ class PostController extends Controller
 
     public function all() {
         return view('landing', [
-            'posts' => Post::latest()->paginate()
+            'posts' => Post::latest()->paginate(5)
         ]);
     }
 
