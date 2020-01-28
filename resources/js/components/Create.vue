@@ -38,47 +38,47 @@
 </template>
 
 <script>
-export default {
-    props: {
-        userId: {
-            type: Number,
-            required: true
-        }
-    },
-    data() {
-        return {
-            error: false,
-            succesful: false,
-            errors: []
-        };
-    },
-    methods: {
-        create() {
-            const formData = new FormData();
-            formData.append("title", this.$refs.title.value);
-            formData.append("body", this.$refs.body.value);
-            formData.append("user_id", this.userId);
-            formData.append("image", this.$refs.image.files[0]);
+    export default {
+        props: {
+            userId: {
+                type: Number,
+                required: true
+            }
+        },
+        data() {
+            return {
+                error: false,
+                successful: false,
+                errors: []
+            };
+        },
+        methods: {
+            create() {
+                const formData = new FormData();
+                formData.append("title", this.$refs.title.value);
+                formData.append("body", this.$refs.body.value);
+                formData.append("user_id", this.userId);
+                formData.append("image", this.$refs.image.files[0]);
 
-            axios.post("/api/posts", formData).then(
-                response => {
-                    this.succesful = true;
-                    this.error = false;
-                    this.errors = [];
-                }
-            )
-            .catch(error => {
-                if (!_.isEmpty(error.response)) {
-                    if((error.response.status = 422)) {
-                        this.errors = error.response.data.errors;
-                        this.succesful = false;
-                        this.error = true;
-                    }
-                }
-            });
-            this.$refs.title.value = "";
-            this.$refs.body.value = "";
+                axios.post("/api/posts", formData).then(
+                        response => {
+                            this.successful = true;
+                            this.error = false;
+                            this.errors = [];
+                        }
+                    )
+                    .catch(error => {
+                        if (!_.isEmpty(error.response)) {
+                            if ((error.response.status = 422)) {
+                                this.errors = error.response.data.errors;
+                                this.successful = false;
+                                this.error = true;
+                            }
+                        }
+                    });
+                this.$refs.title.value = "";
+                this.$refs.body.value = "";
+            }
         }
-    }
-};
+    };
 </script>
