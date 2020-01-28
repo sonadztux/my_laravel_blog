@@ -5,7 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Neo Ighodaro">
+    <meta name="author" content="sonadztux">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <title>sonadztux's Online Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style>
@@ -29,9 +33,11 @@
                 <ul class="navbar-nav ml-auto">
                     @if (Route::has('login'))
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                    </li>
+                        @if (auth()->user()->hasRole('admin'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                            </li>
+                        @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
