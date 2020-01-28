@@ -23,4 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // INDEX
 Route::get('/', 'PostController@all');
 
+// ADMIN
 Route::get('/admin/{any}', 'AdminController@index')->where('any', '.*');
+
+// COMMENT
+Route::get('/{post}/comments', 'CommentController@index');
+Route::post('/{post}/comments', 'CommentController@store');
