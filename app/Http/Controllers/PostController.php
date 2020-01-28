@@ -41,7 +41,7 @@ class PostController extends Controller
             'body' => 'required',
             'user_id' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg', 
-        ]
+        ]);
 
         $post = new Post;
 
@@ -61,7 +61,6 @@ class PostController extends Controller
 
         return new PostResource($post);
 
-        )
     }
 
     /**
