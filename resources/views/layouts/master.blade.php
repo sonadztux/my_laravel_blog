@@ -29,9 +29,11 @@
                 <ul class="navbar-nav ml-auto">
                     @if (Route::has('login'))
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                    </li>
+                        @if (auth()->user()->hasRole('admin'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                            </li>
+                        @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">

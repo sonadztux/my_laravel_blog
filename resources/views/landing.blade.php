@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row align-items-center">
         <div class="col-md-8 mx-auto">
-            <h1 class="my-4 text-center">Welcome to the Blog </h1>
+            <h1 class="my-4 text-center">Welcome to sndztx blog </h1>
 
             @foreach ($posts as $post)
             <div class="card mb-4">

@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h2>Create a new post</h2>
         <form>
             <div :class="['form-group m-1 p-3', (successful ? 'alert-success' : '')]">
                 <span v-if="successful" class="label label-sucess">Published!</span>
@@ -33,6 +34,10 @@
             <button type="submit" @click.prevent="create" class="btn btn-primary block">
                 Submit
             </button>
+            
+            <a href="/admin/dashboard">
+                <button class="btn btn-secondary block" type="button">Back</button>
+            </a>
         </form>
     </div>
 </template>

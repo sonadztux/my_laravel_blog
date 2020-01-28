@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h2>Edit Post</h2>
         <form>
             <div :class="['form-group m-1 p-3', successful ? 'alert-success' : '']">
                 <span v-if="successful" class="label label-sucess">Updated!</span>
@@ -26,6 +27,10 @@
             <button type="submit" @click.prevent="update" class="btn btn-primary block">
                 Submit
             </button>
+
+            <a href="/admin/dashboard">
+                <button class="btn btn-secondary block" type="button">Back</button>
+            </a>
         </form>
     </div>
 </template>
