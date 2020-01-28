@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // INDEX
 Route::get('/', 'PostController@all');
+
+Route::get('/admin/{any}', 'AdminController@index')->where('any', '.*');
